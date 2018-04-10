@@ -1,4 +1,4 @@
-
+//Grant
 public class GameOfLife {
 
 	public static int screenWidth = 400;
@@ -50,7 +50,6 @@ public class GameOfLife {
 			for (Colony curCol : curRow) {
 				if (curCol.getShouldTurnFate()) {
 					curCol.setFate();
-					curCol.setShouldTurnFate();
 				}
 			}
 		}
@@ -106,10 +105,20 @@ public class GameOfLife {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Any live cell with fwer than two live neighbors dies, as if caused by under
 	 * population. Any live cell with two or three live neighbors lives on to the
 	 * next generation. Any live cell with more than three live neighbors dies, as
 	 * if by over population. Any dead cell with exactly three live neighbors
+=======
+	 * Any live cell with fewer than two live neighbors dies, as if caused by under
+	 * population. 
+	 * Any live cell with two or three live neighbors lives on to the
+	 * next generation. 
+	 * Any live cell with more than three live neighbors dies, as
+	 * if by over population. 
+	 * Any dead cell with exactly three live neighbors
+>>>>>>> branch 'master' of https://www.github.com/GSchowalter/Game_Of_Life
 	 * becomes a live cell, as if by reproduction.
 	 * 
 	 * @param colony
@@ -137,8 +146,8 @@ public class GameOfLife {
 		board[10][10 + 1].setFate();
 		board[10][10 - 1].setShouldTurnFate();
 		board[10][10 - 1].setFate();
-//		board[10 + 1][10 - 1].setShouldTurnFate();
-//		board[10 + 1][10 - 1].setFate();
+		board[10 + 1][10 - 1].setShouldTurnFate();
+		board[10 + 1][10 - 1].setFate();
 
 	}
 }
