@@ -177,27 +177,69 @@ public class GameOfLife {
 	}
 
 	public static void addOnMouseClick() {
-		int x = (int) (StdDraw.mouseX() / colonyWidth);
-		int y = (int) (StdDraw.mouseY() / colonyWidth);
-		board[x][y].setShouldTurnFate();
-		board[x][y].setFate();
+		if (StdDraw.mouseX() < screenWidth && StdDraw.mouseY() < screenWidth) {
+			int x = (int) (StdDraw.mouseX() / colonyWidth);
+			int y = (int) (StdDraw.mouseY() / colonyWidth);
+			board[x][y].setShouldTurnFate();
+			board[x][y].setFate();
+		}
 
 	}
 
 	public static void eventHandler() {
 		if (StdDraw.isMousePressed()) {
 			addOnMouseClick();
+			buttonCheck();
 		}
 	}
-	
-	public static void showButtons()
-	{
-		// Top button
+
+	public static void showButtons() {
+		// Start button
 		StdDraw.setPenColor(StdDraw.BOOK_BLUE);
-		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - buttonHeight / 2, buttonWidth / 2, buttonHeight / 2);
+		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - buttonHeight / 2, buttonWidth / 2,
+				buttonHeight / 2);
+		// Stop button
 		StdDraw.setPenColor(StdDraw.MAGENTA);
-		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - (buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
+		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - (buttonHeight + buttonHeight / 2),
+				buttonWidth / 2, buttonHeight / 2);
+		// Step button
 		StdDraw.setPenColor(StdDraw.ORANGE);
-		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - (2 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
+		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2,
+				screenWidth - (2 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
 	}
+
+	public static void buttonCheck() {
+		// Checks start button
+		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
+				&& StdDraw.mouseY() < screenWidth && StdDraw.mouseY() > screenWidth - buttonHeight) {
+			startButton();
+		}
+
+		// Checks stop button
+		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
+				&& StdDraw.mouseY() > screenWidth - (2 * buttonHeight)
+				&& StdDraw.mouseY() < screenWidth - buttonHeight) {
+			stopButton();
+		}
+		
+		// Checks step button
+		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
+				&& StdDraw.mouseY() < screenWidth - (2 * buttonHeight)
+				&& StdDraw.mouseY() > screenWidth - ( 3 * buttonHeight)) {
+			stepButton();
+		}
+	}
+
+	public static void startButton() {
+		ENABLED = true;
+	}
+
+	public static void stopButton() {
+		ENABLED = false;
+	}
+	
+	public static void stepButton() {
+		update(board);
+	}
+	
 }
