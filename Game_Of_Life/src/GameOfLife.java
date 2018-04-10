@@ -4,7 +4,6 @@ public class GameOfLife {
 	public static final int DRAW_DELAY = 100;
 
 	public static int screenWidth = 400;
-	public static int screenHeight = 400;
 	public static int length = 30;
 	public static double colonyWidth = (double) screenWidth / length;
 	public static boolean ENABLED = true;
@@ -12,9 +11,9 @@ public class GameOfLife {
 
 	public static void main(String[] args) {
 		StdDraw.enableDoubleBuffering();
-		StdDraw.setCanvasSize(screenWidth, screenHeight);
+		StdDraw.setCanvasSize(screenWidth, screenWidth);
 		StdDraw.setXscale(0, screenWidth);
-		StdDraw.setYscale(0, screenHeight);
+		StdDraw.setYscale(0, screenWidth);
 		board = new Colony[length][length];
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {

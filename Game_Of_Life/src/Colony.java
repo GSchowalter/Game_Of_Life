@@ -21,7 +21,7 @@ public class Colony {
 		StdDraw.setPenRadius(.001);
 		if (populated)
 		{
-			StdDraw.setPenColor(StdDraw.YELLOW);
+			StdDraw.setPenColor(StdDraw.DARK_GRAY);
 		}
 		else
 		{
