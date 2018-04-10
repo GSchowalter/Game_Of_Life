@@ -30,6 +30,7 @@ public class GameOfLife {
 		while (ENABLED) {
 			show();
 			update(board);
+			eventHandler();
 		}
 	}
 
@@ -162,5 +163,22 @@ public class GameOfLife {
 		board[x - 1][y - 1].setFate();
 		board[x][y + 1].setShouldTurnFate();
 		board[x][y + 1].setFate();
+	}
+	
+	public static void addOnMouseClick()
+	{
+		int x = (int) (StdDraw.mouseX() / colonyWidth);
+		int y = (int) (StdDraw.mouseY() / colonyWidth);
+		board[x][y].setShouldTurnFate();
+		board[x][y].setFate();
+
+	}
+	
+	public static void eventHandler()
+	{
+		if (StdDraw.isMousePressed())
+		{
+			addOnMouseClick();
+		}
 	}
 }
