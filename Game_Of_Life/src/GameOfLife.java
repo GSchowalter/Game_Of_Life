@@ -19,12 +19,12 @@ public class GameOfLife {
 				board[i][j] = new Colony(i, j);
 			}
 		}
-		
+
 		setPopulatedColonies();
-		
+
 		while (ENABLED) {
-			update();
 			show();
+			update(board);
 		}
 	}
 
@@ -37,7 +37,7 @@ public class GameOfLife {
 		StdDraw.show();
 	}
 
-	public static void update() {
+	public static void update(Colony[][] board) {
 		// Sets the fate
 		for (Colony[] curRow : board) {
 			for (Colony curCol : curRow) {
@@ -48,7 +48,10 @@ public class GameOfLife {
 		// Executes fate
 		for (Colony[] curRow : board) {
 			for (Colony curCol : curRow) {
-				curCol.setFate();
+				if (curCol.getShouldTurnFate()) {
+					curCol.setFate();
+					curCol.setShouldTurnFate();
+				}
 			}
 		}
 	}
@@ -127,14 +130,15 @@ public class GameOfLife {
 		}
 	}
 
-	
-	public static void setPopulatedColonies()
-	{
-		board[5][5].setShouldTurnFate();
-		board[5][5].setFate();
-		board[5][5 + 1].setShouldTurnFate();
-		board[5][5 + 1].setFate();
-		board[5][5 - 1].setShouldTurnFate();
-		board[5][5 - 1].setFate();
+	public static void setPopulatedColonies() {
+		board[10][10].setShouldTurnFate();
+		board[10][10].setFate();
+		board[10][10 + 1].setShouldTurnFate();
+		board[10][10 + 1].setFate();
+		board[10][10 - 1].setShouldTurnFate();
+		board[10][10 - 1].setFate();
+//		board[10 + 1][10 - 1].setShouldTurnFate();
+//		board[10 + 1][10 - 1].setFate();
+
 	}
 }

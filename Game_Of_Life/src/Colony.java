@@ -67,5 +67,10 @@ public class Colony {
 		return y;
 	}
 	
+	public boolean getShouldTurnFate()
+	{
+		return shouldTurnFate;
+	}
+	
 	
 }
