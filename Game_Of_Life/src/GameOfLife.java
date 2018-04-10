@@ -7,7 +7,9 @@ public class GameOfLife {
 
 	public static final int DRAW_DELAY = 100;
 
+	public static int buttonWidth = 100;
 	public static int screenWidth = 400;
+	public static int buttonHeight = screenWidth / 3;
 	public static int length = 30;
 	public static double colonyWidth = (double) screenWidth / length;
 	public static boolean ENABLED = true;
@@ -15,8 +17,8 @@ public class GameOfLife {
 
 	public static void main(String[] args) {
 		StdDraw.enableDoubleBuffering();
-		StdDraw.setCanvasSize(screenWidth, screenWidth);
-		StdDraw.setXscale(0, screenWidth);
+		StdDraw.setCanvasSize(screenWidth + buttonWidth, screenWidth);
+		StdDraw.setXscale(0, screenWidth + buttonWidth);
 		StdDraw.setYscale(0, screenWidth);
 		board = new Colony[length][length];
 		for (int i = 0; i < board.length; i++) {
@@ -41,6 +43,7 @@ public class GameOfLife {
 				colony.show(colonyWidth);
 			}
 		}
+		showButtons();
 		StdDraw.show(DRAW_DELAY);
 	}
 
@@ -180,5 +183,16 @@ public class GameOfLife {
 		{
 			addOnMouseClick();
 		}
+	}
+	
+	public static void showButtons()
+	{
+		// Top button
+		StdDraw.setPenColor(StdDraw.BOOK_BLUE);
+		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - buttonHeight / 2, buttonWidth / 2, buttonHeight / 2);
+		StdDraw.setPenColor(StdDraw.MAGENTA);
+		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - (buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
+		StdDraw.setPenColor(StdDraw.ORANGE);
+		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - (2 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
 	}
 }
