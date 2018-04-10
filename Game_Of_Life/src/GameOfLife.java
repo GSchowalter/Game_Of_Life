@@ -106,7 +106,7 @@ public class GameOfLife {
 
 	/**
 <<<<<<< HEAD
-	 * Any live cell with fwer than two live neighbors dies, as if caused by under
+	 * Any live cell with fewer than two live neighbors dies, as if caused by under
 	 * population. Any live cell with two or three live neighbors lives on to the
 	 * next generation. Any live cell with more than three live neighbors dies, as
 	 * if by over population. Any dead cell with exactly three live neighbors
@@ -140,14 +140,28 @@ public class GameOfLife {
 	}
 
 	public static void setPopulatedColonies() {
-		board[10][10].setShouldTurnFate();
-		board[10][10].setFate();
-		board[10][10 + 1].setShouldTurnFate();
-		board[10][10 + 1].setFate();
-		board[10][10 - 1].setShouldTurnFate();
-		board[10][10 - 1].setFate();
-		board[10 + 1][10 - 1].setShouldTurnFate();
-		board[10 + 1][10 - 1].setFate();
-
+		drawGlider(20, 20);
+//		board[20][20].setShouldTurnFate();
+//		board[20][20].setFate();
+//		board[10][10 + 1].setShouldTurnFate();
+//		board[10][10 + 1].setFate();
+//		board[10][10 - 1].setShouldTurnFate();
+//		board[10][10 - 1].setFate();
+//		board[10 + 1][10 - 1].setShouldTurnFate();
+//		board[10 + 1][10 - 1].setFate();
+	}
+	
+	public static void drawGlider(int x, int y)
+	{
+		board[x + 1][y].setShouldTurnFate();
+		board[x + 1][y].setFate();
+		board[x + 1][y - 1].setShouldTurnFate();
+		board[x + 1][y - 1].setFate();
+		board[x][y - 1].setShouldTurnFate();
+		board[x][y - 1].setFate();
+		board[x - 1][y - 1].setShouldTurnFate();
+		board[x - 1][y - 1].setFate();
+		board[x][y + 1].setShouldTurnFate();
+		board[x][y + 1].setFate();
 	}
 }
