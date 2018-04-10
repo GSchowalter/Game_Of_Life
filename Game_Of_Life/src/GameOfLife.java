@@ -30,6 +30,7 @@ public class GameOfLife {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void show() {
 		for (Colony[] list : board) {
 			for (Colony colony : list) {
@@ -62,42 +63,42 @@ public class GameOfLife {
 	public static int getNumberOfInfluence(int x, int y, Colony[][] board) {
 		int numPopulated = 0;
 		// Check left cell
-		if ((x - 1 > 0 && y > 0 && x - 1 < length - 1 && y < length - 1) && board[x - 1][y].getPopulated()) {
+		if ((x - 1 >= 0 && y >= 0 && x - 1 < length && y < length) && board[x - 1][y].getPopulated()) {
 			numPopulated++;
 		}
 
 		// Check top left
-		if ((x - 1 > 0 && y + 1 > 0 && x  - 1 < length - 1 && y + 1 < length - 1) && board[x - 1][y + 1].getPopulated()) {
+		if ((x - 1 > 0 && y + 1 > 0 && x - 1 < length && y + 1 < length) && board[x - 1][y + 1].getPopulated()) {
 			numPopulated++;
 		}
 
 		// Check top
-		if ((x > 0 && y + 1 > 0 && x < length - 1 && y + 1 < length - 1) && board[x][y + 1].getPopulated()) {
+		if ((x > 0 && y + 1 > 0 && x < length && y + 1 < length) && board[x][y + 1].getPopulated()) {
 			numPopulated++;
 		}
 
 		// Check top right
-		if ((x + 1 > 0 && y + 1 > 0 && x + 1 < length - 1 && y + 1 < length - 1) && board[x + 1][y + 1].getPopulated()) {
+		if ((x + 1 > 0 && y + 1 > 0 && x + 1 < length && y + 1 < length) && board[x + 1][y + 1].getPopulated()) {
 			numPopulated++;
 		}
 
 		// Check right
-		if ((x + 1 > 0 && y > 0 && x + 1 < length - 1 && y < length - 1) && board[x + 1][y].getPopulated()) {
+		if ((x + 1 > 0 && y > 0 && x + 1 < length && y < length) && board[x + 1][y].getPopulated()) {
 			numPopulated++;
 		}
 
 		// Check bottom right
-		if ((x + 1 > 0 && y - 1 > 0 && x + 1 < length - 1 && y - 1 < length - 1) && board[x + 1][y - 1].getPopulated()) {
+		if ((x + 1 > 0 && y - 1 > 0 && x + 1 < length && y - 1 < length) && board[x + 1][y - 1].getPopulated()) {
 			numPopulated++;
 		}
 
 		// Check bottom
-		if ((x > 0 && y - 1 > 0 && x < length - 1 && y - 1 < length - 1) && board[x][y - 1].getPopulated()) {
+		if ((x > 0 && y - 1 > 0 && x < length && y - 1 < length) && board[x][y - 1].getPopulated()) {
 			numPopulated++;
 		}
 
 		// Check bottom left
-		if ((x - 1 > 0 && y - 1 > 0 && x - 1 < length - 1 && y - 1 < length - 1) && board[x - 1][y - 1].getPopulated()) {
+		if ((x - 1 > 0 && y - 1 > 0 && x - 1 < length && y - 1 < length) && board[x - 1][y - 1].getPopulated()) {
 			numPopulated++;
 		}
 
