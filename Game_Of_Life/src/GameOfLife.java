@@ -19,8 +19,11 @@ public class GameOfLife {
 				board[i][j] = new Colony(i, j);
 			}
 		}
-
+		
+		setPopulatedColonies();
+		
 		while (ENABLED) {
+			update();
 			show();
 		}
 	}
@@ -54,7 +57,7 @@ public class GameOfLife {
 	// the board.
 	public static int getNumberOfInfluence(int x, int y, Colony[][] board) {
 		int numPopulated = 0;
-		if (x > 0 && y > 0 && x < screenWidth && y < screenHeight) {
+		if (x > 0 && y > 0 && x < length - 1 && y < length - 1) {
 			// Check left cell
 			if (board[x - 1][y].getPopulated()) {
 				numPopulated++;
@@ -124,4 +127,14 @@ public class GameOfLife {
 		}
 	}
 
+	
+	public static void setPopulatedColonies()
+	{
+		board[5][5].setShouldTurnFate();
+		board[5][5].setFate();
+		board[5][5 + 1].setShouldTurnFate();
+		board[5][5 + 1].setFate();
+		board[5][5 - 1].setShouldTurnFate();
+		board[5][5 - 1].setFate();
+	}
 }
