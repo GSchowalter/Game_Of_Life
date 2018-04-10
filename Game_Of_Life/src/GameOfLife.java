@@ -1,8 +1,8 @@
 //Grant
 public class GameOfLife {
 
-	public static final int DRAW_DELAY = 1000;
-	
+	public static final int DRAW_DELAY = 100;
+
 	public static int screenWidth = 400;
 	public static int screenHeight = 400;
 	public static int length = 30;
@@ -61,67 +61,61 @@ public class GameOfLife {
 	// the board.
 	public static int getNumberOfInfluence(int x, int y, Colony[][] board) {
 		int numPopulated = 0;
-		if (x > 0 && y > 0 && x < length - 1 && y < length - 1) {
-			// Check left cell
-			if ((x - 1 > 0 && y > 0 && x < length - 1 && y < length - 1) && board[x - 1][y].getPopulated()) {
-				numPopulated++;
-			}
-
-			// Check top left
-			if ((x - 1 > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x - 1][y + 1].getPopulated()) {
-				numPopulated++;
-			}
-
-			// Check top
-			if ((x > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x][y + 1].getPopulated()) {
-				numPopulated++;
-			}
-
-			// Check top right
-			if ((x + 1 > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x + 1][y + 1].getPopulated()) {
-				numPopulated++;
-			}
-
-			// Check right
-			if ((x + 1 > 0 && y > 0 && x < length - 1 && y < length - 1) && board[x + 1][y].getPopulated()) {
-				numPopulated++;
-			}
-
-			// Check bottom right
-			if ((x + 1 > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x + 1][y - 1].getPopulated()) {
-				numPopulated++;
-			}
-
-			// Check bottom
-			if ((x > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x][y - 1].getPopulated()) {
-				numPopulated++;
-			}
-
-			// Check bottom left
-			if ((x - 1 > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x - 1][y - 1].getPopulated()) {
-				numPopulated++;
-			}
-
+		// Check left cell
+		if ((x - 1 > 0 && y > 0 && x < length - 1 && y < length - 1) && board[x - 1][y].getPopulated()) {
+			numPopulated++;
 		}
+
+		// Check top left
+		if ((x - 1 > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x - 1][y + 1].getPopulated()) {
+			numPopulated++;
+		}
+
+		// Check top
+		if ((x > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x][y + 1].getPopulated()) {
+			numPopulated++;
+		}
+
+		// Check top right
+		if ((x + 1 > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x + 1][y + 1].getPopulated()) {
+			numPopulated++;
+		}
+
+		// Check right
+		if ((x + 1 > 0 && y > 0 && x < length - 1 && y < length - 1) && board[x + 1][y].getPopulated()) {
+			numPopulated++;
+		}
+
+		// Check bottom right
+		if ((x + 1 > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x + 1][y - 1].getPopulated()) {
+			numPopulated++;
+		}
+
+		// Check bottom
+		if ((x > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x][y - 1].getPopulated()) {
+			numPopulated++;
+		}
+
+		// Check bottom left
+		if ((x - 1 > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x - 1][y - 1].getPopulated()) {
+			numPopulated++;
+		}
+
 		return numPopulated;
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Any live cell with fewer than two live neighbors dies, as if caused by under
-	 * population. Any live cell with two or three live neighbors lives on to the
-	 * next generation. Any live cell with more than three live neighbors dies, as
-	 * if by over population. Any dead cell with exactly three live neighbors
-=======
-	 * Any live cell with fewer than two live neighbors dies, as if caused by under
-	 * population. 
-	 * Any live cell with two or three live neighbors lives on to the
-	 * next generation. 
-	 * Any live cell with more than three live neighbors dies, as
-	 * if by over population. 
-	 * Any dead cell with exactly three live neighbors
->>>>>>> branch 'master' of https://www.github.com/GSchowalter/Game_Of_Life
-	 * becomes a live cell, as if by reproduction.
+	 * <<<<<<< HEAD Any live cell with fewer than two live neighbors dies, as if
+	 * caused by under population. Any live cell with two or three live neighbors
+	 * lives on to the next generation. Any live cell with more than three live
+	 * neighbors dies, as if by over population. Any dead cell with exactly three
+	 * live neighbors ======= Any live cell with fewer than two live neighbors dies,
+	 * as if caused by under population. Any live cell with two or three live
+	 * neighbors lives on to the next generation. Any live cell with more than three
+	 * live neighbors dies, as if by over population. Any dead cell with exactly
+	 * three live neighbors >>>>>>> branch 'master' of
+	 * https://www.github.com/GSchowalter/Game_Of_Life becomes a live cell, as if by
+	 * reproduction.
 	 * 
 	 * @param colony
 	 *            the colony to be checked
@@ -143,18 +137,17 @@ public class GameOfLife {
 
 	public static void setPopulatedColonies() {
 		drawGlider(20, 20);
-//		board[20][20].setShouldTurnFate();
-//		board[20][20].setFate();
-//		board[10][10 + 1].setShouldTurnFate();
-//		board[10][10 + 1].setFate();
-//		board[10][10 - 1].setShouldTurnFate();
-//		board[10][10 - 1].setFate();
-//		board[10 + 1][10 - 1].setShouldTurnFate();
-//		board[10 + 1][10 - 1].setFate();
+		// board[20][20].setShouldTurnFate();
+		// board[20][20].setFate();
+		// board[10][10 + 1].setShouldTurnFate();
+		// board[10][10 + 1].setFate();
+		// board[10][10 - 1].setShouldTurnFate();
+		// board[10][10 - 1].setFate();
+		// board[10 + 1][10 - 1].setShouldTurnFate();
+		// board[10 + 1][10 - 1].setFate();
 	}
-	
-	public static void drawGlider(int x, int y)
-	{
+
+	public static void drawGlider(int x, int y) {
 		board[x + 1][y].setShouldTurnFate();
 		board[x + 1][y].setFate();
 		board[x + 1][y - 1].setShouldTurnFate();

@@ -63,3 +63,57 @@ Caused by: org.eclipse.jgit.errors.TransportException: http://github.com/GSchowa
 
 !ENTRY org.eclipse.egit.ui 4 0 2018-04-09 22:14:30.462
 !MESSAGE Can't connect to any repository: http://github.com/GSchowalter/Game_Of_Life (http://github.com/GSchowalter/Game_Of_Life: not authorized)
+
+!ENTRY org.eclipse.egit.ui 4 0 2018-04-10 16:21:52.930
+!MESSAGE Checkout conflict with files: 
+Game_Of_Life/src/Colony.java
+Game_Of_Life/src/GameOfLife.java
+!STACK 0
+org.eclipse.jgit.api.errors.CheckoutConflictException: Checkout conflict with files: 
+Game_Of_Life/src/Colony.java
+Game_Of_Life/src/GameOfLife.java
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:430)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:357)
+	at org.eclipse.egit.core.op.PullOperation$1.run(PullOperation.java:200)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.egit.core.op.PullOperation.execute(PullOperation.java:232)
+	at org.eclipse.egit.ui.internal.pull.PullOperationUI.execute(PullOperationUI.java:176)
+	at org.eclipse.egit.ui.internal.pull.PullOperationUI.access$0(PullOperationUI.java:168)
+	at org.eclipse.egit.ui.internal.pull.PullOperationUI$1.runInWorkspace(PullOperationUI.java:141)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+Caused by: org.eclipse.jgit.errors.CheckoutConflictException: Checkout conflict with files: 
+Game_Of_Life/src/Colony.java
+Game_Of_Life/src/GameOfLife.java
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:483)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:455)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:299)
+	... 10 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2018-04-10 16:22:18.804
+!MESSAGE Checkout conflict with files: 
+Game_Of_Life/src/Colony.java
+Game_Of_Life/src/GameOfLife.java
+!STACK 0
+org.eclipse.jgit.api.errors.CheckoutConflictException: Checkout conflict with files: 
+Game_Of_Life/src/Colony.java
+Game_Of_Life/src/GameOfLife.java
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:430)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:357)
+	at org.eclipse.egit.core.op.PullOperation$1.run(PullOperation.java:200)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.egit.core.op.PullOperation.execute(PullOperation.java:232)
+	at org.eclipse.egit.ui.internal.pull.PullOperationUI.execute(PullOperationUI.java:176)
+	at org.eclipse.egit.ui.internal.pull.PullOperationUI.access$0(PullOperationUI.java:168)
+	at org.eclipse.egit.ui.internal.pull.PullOperationUI$1.runInWorkspace(PullOperationUI.java:141)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+Caused by: org.eclipse.jgit.errors.CheckoutConflictException: Checkout conflict with files: 
+Game_Of_Life/src/Colony.java
+Game_Of_Life/src/GameOfLife.java
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:483)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:455)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:299)
+	... 10 more
