@@ -56,4 +56,16 @@ public class Colony {
 	{
 		shouldTurnFate = !shouldTurnFate;
 	}
+	
+	public int getX()
+	{
+		return x;
+	}
+	
+	public int getY()
+	{
+		return y;
+	}
+	
+	
 }
