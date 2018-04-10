@@ -44,6 +44,7 @@ public class Colony {
 		if (shouldTurnFate == true) 
 		{
 		populated = !populated;
+		shouldTurnFate = false;
 		}
 	}
 	
