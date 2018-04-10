@@ -1,4 +1,4 @@
-
+//Grant
 public class GameOfLife {
 
 	public static int screenWidth = 400;
@@ -139,8 +139,8 @@ public class GameOfLife {
 		board[10][10 + 1].setFate();
 		board[10][10 - 1].setShouldTurnFate();
 		board[10][10 - 1].setFate();
-//		board[10 + 1][10 - 1].setShouldTurnFate();
-//		board[10 + 1][10 - 1].setFate();
+		board[10 + 1][10 - 1].setShouldTurnFate();
+		board[10 + 1][10 - 1].setFate();
 
 	}
 }
