@@ -11,7 +11,7 @@ public class GameOfLife {
 	public static int buttonWidth = 100;
 	public static int screenHeight = 400;
 	public static int screenWidth = screenHeight + buttonWidth;
-	public static int buttonHeight = screenHeight / 3;
+	public static int buttonHeight = screenHeight / 4;
 	public static int length = 30;
 	public static double colonyWidth = (double) (screenHeight) / length;
 	public static boolean ENABLED = false;
@@ -28,8 +28,6 @@ public class GameOfLife {
 				board[i][j] = new Colony(i, j);
 			}
 		}
-
-		setPopulatedColonies();
 
 		while (true) {
 			while (ENABLED) {
@@ -152,18 +150,6 @@ public class GameOfLife {
 		}
 	}
 
-	public static void setPopulatedColonies() {
-		drawGlider(20, 20);
-		// board[20][20].setShouldTurnFate();
-		// board[20][20].setFate();
-		// board[10][10 + 1].setShouldTurnFate();
-		// board[10][10 + 1].setFate();
-		// board[10][10 - 1].setShouldTurnFate();
-		// board[10][10 - 1].setFate();
-		// board[10 + 1][10 - 1].setShouldTurnFate();
-		// board[10 + 1][10 - 1].setFate();
-	}
-
 	public static void drawGlider(int x, int y) {
 		board[x + 1][y].setShouldTurnFate();
 		board[x + 1][y].setFate();
@@ -228,6 +214,20 @@ public class GameOfLife {
 				&& StdDraw.mouseY() < screenHeight - (2 * buttonHeight)
 				&& StdDraw.mouseY() > screenHeight - (3 * buttonHeight)) {
 			stepButton();
+		}
+
+		// Checks clear button
+		if (StdDraw.mouseX() > screenWidth - buttonWidth && StdDraw.mouseY() < screenHeight - (3 * buttonHeight)
+				&& StdDraw.mouseY() > 0) {
+			clearButton();
+		}
+	}
+
+	private static void clearButton() {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[i].length; j++) {
+				board[i][j] = new Colony(i, j);
+			}
 		}
 	}
 
