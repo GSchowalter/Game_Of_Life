@@ -1,14 +1,16 @@
 
 public class Colony {
 
-	private boolean alive;
+	private boolean populated;
+	private boolean shouldTurnFate;
 	// x and y on coordinate-plane, bottom left is (0,0)
 	private int x;
 	private int y;
 	
 	public Colony(int x, int y)
 	{
-		alive = false;
+		populated = false;
+		shouldTurnFate = false;
 		this.x = x;
 		this.y = y;
 	}
@@ -16,8 +18,8 @@ public class Colony {
 	public void show(double length)
 	{
 		double temp = StdDraw.getPenRadius();
-		StdDraw.setPenRadius(.01);
-		if (alive)
+		StdDraw.setPenRadius(.001);
+		if (populated)
 		{
 			StdDraw.setPenColor(StdDraw.YELLOW);
 		}
@@ -35,5 +37,23 @@ public class Colony {
 	{
 		this.x = x;
 		this.y = y;
+	}
+	
+	public void setFate()
+	{
+		if (shouldTurnFate == true) 
+		{
+		populated = !populated;
+		}
+	}
+	
+	public boolean getPopulated()
+	{
+		return populated;
+	}
+	
+	public void setShouldTurnFate()
+	{
+		shouldTurnFate = !shouldTurnFate;
 	}
 }
