@@ -13,7 +13,7 @@ public class GameOfLife {
 	public static int buttonHeight = screenWidth / 3;
 	public static int length = 30;
 	public static double colonyWidth = (double) screenWidth / length;
-	public static boolean ENABLED = true;
+	public static boolean ENABLED = false;
 	public static Colony[][] board;
 
 	public static void main(String[] args) {
