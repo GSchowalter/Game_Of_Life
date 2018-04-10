@@ -207,14 +207,14 @@ public class GameOfLife {
 				&& StdDraw.mouseY() < screenWidth - buttonHeight) {
 			stopButton();
 		}
-		
+
 		// Checks step button
 		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
 				&& StdDraw.mouseY() < screenWidth - (2 * buttonHeight)
-				&& StdDraw.mouseY() > screenWidth - ( 3 * buttonHeight)) {
+				&& StdDraw.mouseY() > screenWidth - (3 * buttonHeight)) {
 			stepButton();
 		}
-		
+
 		// Checks clear button
 		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
 				&& StdDraw.mouseY() < screenWidth - (3 * buttonHeight)
@@ -238,9 +238,9 @@ public class GameOfLife {
 	public static void stopButton() {
 		ENABLED = false;
 	}
-	
+
 	public static void stepButton() {
 		update(board);
 	}
-	
+
 }
