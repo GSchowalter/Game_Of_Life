@@ -1,6 +1,8 @@
 //Grant
 public class GameOfLife {
 
+	public static final int DRAW_DELAY = 1000;
+	
 	public static int screenWidth = 400;
 	public static int screenHeight = 400;
 	public static int length = 30;
@@ -34,7 +36,7 @@ public class GameOfLife {
 				colony.show(colonyWidth);
 			}
 		}
-		StdDraw.show();
+		StdDraw.show(DRAW_DELAY);
 	}
 
 	public static void update(Colony[][] board) {
@@ -61,42 +63,42 @@ public class GameOfLife {
 		int numPopulated = 0;
 		if (x > 0 && y > 0 && x < length - 1 && y < length - 1) {
 			// Check left cell
-			if (board[x - 1][y].getPopulated()) {
+			if ((x - 1 > 0 && y > 0 && x < length - 1 && y < length - 1) && board[x - 1][y].getPopulated()) {
 				numPopulated++;
 			}
 
 			// Check top left
-			if (board[x - 1][y + 1].getPopulated()) {
+			if ((x - 1 > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x - 1][y + 1].getPopulated()) {
 				numPopulated++;
 			}
 
 			// Check top
-			if (board[x][y + 1].getPopulated()) {
+			if ((x > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x][y + 1].getPopulated()) {
 				numPopulated++;
 			}
 
 			// Check top right
-			if (board[x + 1][y + 1].getPopulated()) {
+			if ((x + 1 > 0 && y + 1 > 0 && x < length - 1 && y < length - 1) && board[x + 1][y + 1].getPopulated()) {
 				numPopulated++;
 			}
 
 			// Check right
-			if (board[x + 1][y].getPopulated()) {
+			if ((x + 1 > 0 && y > 0 && x < length - 1 && y < length - 1) && board[x + 1][y].getPopulated()) {
 				numPopulated++;
 			}
 
 			// Check bottom right
-			if (board[x + 1][y - 1].getPopulated()) {
+			if ((x + 1 > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x + 1][y - 1].getPopulated()) {
 				numPopulated++;
 			}
 
 			// Check bottom
-			if (board[x][y - 1].getPopulated()) {
+			if ((x > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x][y - 1].getPopulated()) {
 				numPopulated++;
 			}
 
 			// Check bottom left
-			if (board[x - 1][y - 1].getPopulated()) {
+			if ((x - 1 > 0 && y - 1 > 0 && x < length - 1 && y < length - 1) && board[x - 1][y - 1].getPopulated()) {
 				numPopulated++;
 			}
 
@@ -106,7 +108,7 @@ public class GameOfLife {
 
 	/**
 <<<<<<< HEAD
-	 * Any live cell with fwer than two live neighbors dies, as if caused by under
+	 * Any live cell with fewer than two live neighbors dies, as if caused by under
 	 * population. Any live cell with two or three live neighbors lives on to the
 	 * next generation. Any live cell with more than three live neighbors dies, as
 	 * if by over population. Any dead cell with exactly three live neighbors

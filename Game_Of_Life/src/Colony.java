@@ -44,11 +44,7 @@ public class Colony {
 		if (shouldTurnFate == true) 
 		{
 		populated = !populated;
-<<<<<<< HEAD
 		shouldTurnFate = false;
-=======
-		shouldTurnFate = !shouldTurnFate;
->>>>>>> branch 'master' of https://www.github.com/GSchowalter/Game_Of_Life
 		}
 	}
 	
