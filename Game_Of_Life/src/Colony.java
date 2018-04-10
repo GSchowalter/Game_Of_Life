@@ -15,6 +15,6 @@ public class Colony {
 	
 	public void show(double length)
 	{
-		StdDraw.rectangle(length, length, length / 2, length / 2);
+		StdDraw.filledSquare(length/2, length/2, length/2);
 	}
 }
