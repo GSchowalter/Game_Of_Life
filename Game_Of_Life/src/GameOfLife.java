@@ -1,5 +1,6 @@
 /**
  * Conway's Mathematical Game of Life.
+ * 
  * @author Grant Schowalter and Josh Peck
  *
  */
@@ -27,10 +28,17 @@ public class GameOfLife {
 
 		setPopulatedColonies();
 
-		while (ENABLED) {
-			show();
-			update(board);
-			eventHandler();
+		while (true) {
+			while (ENABLED) {
+				show();
+				update(board);
+				eventHandler();
+			}
+
+			while (!ENABLED) {
+				show();
+				eventHandler();
+			}
 		}
 	}
 
@@ -164,20 +172,17 @@ public class GameOfLife {
 		board[x][y + 1].setShouldTurnFate();
 		board[x][y + 1].setFate();
 	}
-	
-	public static void addOnMouseClick()
-	{
+
+	public static void addOnMouseClick() {
 		int x = (int) (StdDraw.mouseX() / colonyWidth);
 		int y = (int) (StdDraw.mouseY() / colonyWidth);
 		board[x][y].setShouldTurnFate();
 		board[x][y].setFate();
 
 	}
-	
-	public static void eventHandler()
-	{
-		if (StdDraw.isMousePressed())
-		{
+
+	public static void eventHandler() {
+		if (StdDraw.isMousePressed()) {
 			addOnMouseClick();
 		}
 	}
