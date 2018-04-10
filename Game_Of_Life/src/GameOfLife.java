@@ -1,4 +1,8 @@
-//Grant
+/**
+ * Conway's Mathematical Game of Life.
+ * @author Grant Schowalter and Josh Peck
+ *
+ */
 public class GameOfLife {
 
 	public static final int DRAW_DELAY = 100;
