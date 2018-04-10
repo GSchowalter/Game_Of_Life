@@ -15,6 +15,8 @@ public class Colony {
 	
 	public void show(double length)
 	{
+		double temp = StdDraw.getPenRadius();
+		StdDraw.setPenRadius(.01);
 		if (alive)
 		{
 			StdDraw.setPenColor(StdDraw.YELLOW);
@@ -23,6 +25,15 @@ public class Colony {
 		{
 			StdDraw.setPenColor(StdDraw.RED);
 		}
-		StdDraw.filledSquare((x * length) + length / 2, (y * length) + length / 2, length/2);
+		StdDraw.filledSquare((x * length) + length / 2, (y * length) + length / 2, length / 2);
+		StdDraw.setPenColor(StdDraw.BLACK);
+		StdDraw.square((x * length) + length / 2, (y * length) + length / 2, length / 2);
+		StdDraw.setPenRadius(temp);
+	}
+	
+	public void setPosition(int x, int y)
+	{
+		this.x = x;
+		this.y = y;
 	}
 }
