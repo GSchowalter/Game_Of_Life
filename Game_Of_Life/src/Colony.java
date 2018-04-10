@@ -12,4 +12,9 @@ public class Colony {
 		this.x = x;
 		this.y = y;
 	}
+	
+	public void show(double length)
+	{
+		StdDraw.rectangle(length, length, length / 2, length / 2);
+	}
 }
