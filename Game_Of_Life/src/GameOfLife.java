@@ -16,6 +16,7 @@ public class GameOfLife {
 	public static double colonyWidth = (double) (screenHeight) / length;
 	public static boolean ENABLED = false;
 	public static Colony[][] board;
+	public static int timeCount = 1;
 
 	public static void main(String[] args) {
 		StdDraw.enableDoubleBuffering();
@@ -31,14 +32,23 @@ public class GameOfLife {
 
 		while (true) {
 			while (ENABLED) {
-				show();
-				update(board);
+				if (timeCount == DRAW_DELAY) {
+					show();
+					update(board);
+					timeCount = 1;
+				}
 				eventHandler();
+				timeCount++;
 			}
 
 			while (!ENABLED) {
+				if (timeCount == 500)
+				{
 				show();
+				timeCount = 1;
+				}
 				eventHandler();
+				timeCount++;
 			}
 		}
 	}
@@ -51,7 +61,7 @@ public class GameOfLife {
 			}
 		}
 		showButtons();
-		StdDraw.show(DRAW_DELAY);
+		StdDraw.show(1);
 	}
 
 	public static void update(Colony[][] board) {
@@ -194,6 +204,10 @@ public class GameOfLife {
 		// Step button
 		StdDraw.setPenColor(StdDraw.ORANGE);
 		StdDraw.filledRectangle(screenWidth - buttonWidth / 2, screenHeight - (2 * buttonHeight + buttonHeight / 2),
+				buttonWidth / 2, buttonHeight / 2);
+		// Reset button
+		StdDraw.setPenColor(StdDraw.GREEN);
+		StdDraw.filledRectangle(screenWidth - buttonWidth / 2, screenHeight - (3 * buttonHeight + buttonHeight / 2),
 				buttonWidth / 2, buttonHeight / 2);
 	}
 
