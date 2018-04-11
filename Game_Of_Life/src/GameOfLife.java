@@ -9,10 +9,10 @@ public class GameOfLife {
 	public static final int DRAW_DELAY = 100;
 
 	public static int buttonWidth = 100;
-	public static int screenHeight = 400;
+	public static int screenHeight = 1800;
 	public static int screenWidth = screenHeight + buttonWidth;
 	public static int buttonHeight = screenHeight / 4;
-	public static int length = 30;
+	public static int length = 40;
 	public static double colonyWidth = (double) (screenHeight) / length;
 	public static boolean ENABLED = false;
 	public static Colony[][] board;
