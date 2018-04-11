@@ -180,23 +180,28 @@ public class GameOfLife {
 	}
 
 	public static void showButtons() {
+		StdDraw.setFont();
+		
 		// Start button
 		StdDraw.setPenColor(StdDraw.BOOK_BLUE);
 		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - buttonHeight / 2, buttonWidth / 2,
 				buttonHeight / 2);
+		StdDraw.text(colonyWidth * length + buttonWidth / 2, screenWidth - buttonHeight / 2, "Start");
+
 		// Stop button
 		StdDraw.setPenColor(StdDraw.MAGENTA);
 		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - (buttonHeight + buttonHeight / 2),
 				buttonWidth / 2, buttonHeight / 2);
+		
 		// Step button
 		StdDraw.setPenColor(StdDraw.ORANGE);
 		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2,
 				screenWidth - (2 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
-		
+
 		// Reset button
-				StdDraw.setPenColor(StdDraw.GREEN);
-				StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2,
-						screenWidth - (3 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
+		StdDraw.setPenColor(StdDraw.GREEN);
+		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2,
+				screenWidth - (3 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
 	}
 
 	public static void buttonCheck() {
