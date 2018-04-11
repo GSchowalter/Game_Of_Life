@@ -192,6 +192,11 @@ public class GameOfLife {
 		StdDraw.setPenColor(StdDraw.ORANGE);
 		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2,
 				screenWidth - (2 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
+		
+		// Reset button
+				StdDraw.setPenColor(StdDraw.GREEN);
+				StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2,
+						screenWidth - (3 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
 	}
 
 	public static void buttonCheck() {
