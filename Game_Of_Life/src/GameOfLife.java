@@ -11,8 +11,8 @@ public class GameOfLife {
 	public static int buttonWidth = 100;
 	public static int screenHeight = 1800;
 	public static int screenWidth = screenHeight + buttonWidth;
-	public static int buttonHeight = screenHeight / 4;
-	public static int length = 40;
+	public static int buttonHeight = screenHeight / 5;
+	public static int length = 100;
 	public static double colonyWidth = (double) (screenHeight) / length;
 	public static boolean ENABLED = false;
 	public static Colony[][] board;
@@ -24,11 +24,7 @@ public class GameOfLife {
 		StdDraw.setXscale(0, screenWidth);
 		StdDraw.setYscale(0, screenHeight);
 		board = new Colony[length][length];
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				board[i][j] = new Colony(i, j);
-			}
-		}
+		setBoard(false);
 
 		while (true) {
 			while (ENABLED) {
@@ -216,6 +212,11 @@ public class GameOfLife {
 		StdDraw.setPenColor(StdDraw.GREEN);
 		StdDraw.filledRectangle(screenWidth - buttonWidth / 2, screenHeight - (3 * buttonHeight + buttonHeight / 2),
 				buttonWidth / 2, buttonHeight / 2);
+		
+		// Reset random button
+				StdDraw.setPenColor(StdDraw.BLACK);
+				StdDraw.filledRectangle(screenWidth - buttonWidth / 2, screenHeight - (4 * buttonHeight + buttonHeight / 2),
+						buttonWidth / 2, buttonHeight / 2);
 	}
 
 	public static void buttonCheck() {
@@ -237,19 +238,17 @@ public class GameOfLife {
 			stepButton();
 		}
 
-		// Checks clear button
+		// Checks reset button
 		if (StdDraw.mouseX() > screenWidth - buttonWidth && StdDraw.mouseY() < screenHeight - (3 * buttonHeight)
-				&& StdDraw.mouseY() > 0) {
-			clearButton();
+				&& StdDraw.mouseY() > screenHeight - (4 * buttonHeight)) {
+			setBoard(false);
 		}
-	}
-
-	private static void clearButton() {
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				board[i][j] = new Colony(i, j);
-			}
-		}
+		
+		// Checks reset random button
+				if (StdDraw.mouseX() > screenWidth - buttonWidth && StdDraw.mouseY() < screenHeight - (4 * buttonHeight)
+						&& StdDraw.mouseY() > 0) {
+					setBoard(true);
+				}
 	}
 
 	public static void startButton() {
@@ -262,6 +261,15 @@ public class GameOfLife {
 
 	public static void stepButton() {
 		update(board);
+	}
+	
+	public static void setBoard(boolean random)
+	{
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[i].length; j++) {
+				board[i][j] = new Colony(i, j, random);
+			}
+		}
 	}
 
 }

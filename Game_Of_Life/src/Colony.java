@@ -7,12 +7,16 @@ public class Colony {
 	private int x;
 	private int y;
 	
-	public Colony(int x, int y)
+	public Colony(int x, int y, boolean random)
 	{
 		populated = false;
 		shouldTurnFate = false;
 		this.x = x;
 		this.y = y;
+		if (random && Math.random() < .5)
+		{
+			populated = true;
+		}
 	}
 	
 	public void show(double length)
