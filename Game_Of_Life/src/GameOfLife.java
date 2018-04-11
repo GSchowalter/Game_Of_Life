@@ -6,10 +6,10 @@
  */
 public class GameOfLife {
 
-	public static final int DRAW_DELAY = 100;
+	public static final int DRAW_DELAY = 1000;
 
 	public static int buttonWidth = 100;
-	public static int screenHeight = 1800;
+	public static int screenHeight = 400;
 	public static int screenWidth = screenHeight + buttonWidth;
 	public static int buttonHeight = screenHeight / 5;
 	public static int length = 100;
