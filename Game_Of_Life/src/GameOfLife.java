@@ -9,18 +9,20 @@ public class GameOfLife {
 	public static final int DRAW_DELAY = 100;
 
 	public static int buttonWidth = 100;
-	public static int screenWidth = 400;
-	public static int buttonHeight = screenWidth / 4;
-	public static int length = 30;
-	public static double colonyWidth = (double) screenWidth / length;
+	public static int screenHeight = 1800;
+	public static int screenWidth = screenHeight + buttonWidth;
+	public static int buttonHeight = screenHeight / 4;
+	public static int length = 40;
+	public static double colonyWidth = (double) (screenHeight) / length;
 	public static boolean ENABLED = false;
 	public static Colony[][] board;
+	public static int timeCount = 1;
 
 	public static void main(String[] args) {
 		StdDraw.enableDoubleBuffering();
-		StdDraw.setCanvasSize(screenWidth + buttonWidth, screenWidth);
-		StdDraw.setXscale(0, screenWidth + buttonWidth);
-		StdDraw.setYscale(0, screenWidth);
+		StdDraw.setCanvasSize(screenWidth, screenHeight);
+		StdDraw.setXscale(0, screenWidth);
+		StdDraw.setYscale(0, screenHeight);
 		board = new Colony[length][length];
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
@@ -30,14 +32,23 @@ public class GameOfLife {
 
 		while (true) {
 			while (ENABLED) {
-				show();
-				update(board);
+				if (timeCount == DRAW_DELAY) {
+					show();
+					update(board);
+					timeCount = 1;
+				}
 				eventHandler();
+				timeCount++;
 			}
 
 			while (!ENABLED) {
+				if (timeCount == DRAW_DELAY)
+				{
 				show();
+				timeCount = 1;
+				}
 				eventHandler();
+				timeCount++;
 			}
 		}
 	}
@@ -50,7 +61,7 @@ public class GameOfLife {
 			}
 		}
 		showButtons();
-		StdDraw.show(DRAW_DELAY);
+		StdDraw.show(1);
 	}
 
 	public static void update(Colony[][] board) {
@@ -166,8 +177,10 @@ public class GameOfLife {
 		if (StdDraw.mouseX() < screenWidth && StdDraw.mouseY() < screenWidth) {
 			int x = (int) (StdDraw.mouseX() / colonyWidth);
 			int y = (int) (StdDraw.mouseY() / colonyWidth);
-			board[x][y].setShouldTurnFate();
-			board[x][y].setFate();
+			if (x < length && y < length) {
+				board[x][y].setShouldTurnFate();
+				board[x][y].setFate();
+			}
 		}
 
 	}
@@ -184,51 +197,49 @@ public class GameOfLife {
 		
 		// Start button
 		StdDraw.setPenColor(StdDraw.BOOK_BLUE);
-		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - buttonHeight / 2, buttonWidth / 2,
+		StdDraw.filledRectangle(screenWidth - buttonWidth / 2, screenHeight - buttonHeight / 2, buttonWidth / 2,
 				buttonHeight / 2);
 		StdDraw.text(colonyWidth * length + buttonWidth / 2, screenWidth - buttonHeight / 2, "Start");
 
 		// Stop button
 		StdDraw.setPenColor(StdDraw.MAGENTA);
-		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2, screenWidth - (buttonHeight + buttonHeight / 2),
+		StdDraw.filledRectangle(screenWidth - buttonWidth / 2, screenHeight - (buttonHeight + buttonHeight / 2),
 				buttonWidth / 2, buttonHeight / 2);
 		
 		// Step button
-		StdDraw.setPenColor(StdDraw.ORANGE);
-		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2,
-				screenWidth - (2 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
+		StdDraw.setPenColor(StdDraw.ORANGE); 
+
+		StdDraw.filledRectangle(screenWidth - buttonWidth / 2, screenHeight - (2 * buttonHeight + buttonHeight / 2),
+				buttonWidth / 2, buttonHeight / 2);
 
 		// Reset button
 		StdDraw.setPenColor(StdDraw.GREEN);
-		StdDraw.filledRectangle(colonyWidth * length + buttonWidth / 2,
-				screenWidth - (3 * buttonHeight + buttonHeight / 2), buttonWidth / 2, buttonHeight / 2);
+		StdDraw.filledRectangle(screenWidth - buttonWidth / 2, screenHeight - (3 * buttonHeight + buttonHeight / 2),
+				buttonWidth / 2, buttonHeight / 2);
 	}
 
 	public static void buttonCheck() {
 		// Checks start button
-		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
-				&& StdDraw.mouseY() < screenWidth && StdDraw.mouseY() > screenWidth - buttonHeight) {
+		if (StdDraw.mouseX() > screenWidth - buttonWidth && StdDraw.mouseY() > screenHeight - buttonHeight) {
 			startButton();
 		}
 
 		// Checks stop button
-		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
-				&& StdDraw.mouseY() > screenWidth - (2 * buttonHeight)
-				&& StdDraw.mouseY() < screenWidth - buttonHeight) {
+		if (StdDraw.mouseX() > screenWidth - buttonWidth && StdDraw.mouseY() > screenHeight - (2 * buttonHeight)
+				&& StdDraw.mouseY() < screenHeight - buttonHeight) {
 			stopButton();
 		}
 
 		// Checks step button
-		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
-				&& StdDraw.mouseY() < screenWidth - (2 * buttonHeight)
-				&& StdDraw.mouseY() > screenWidth - (3 * buttonHeight)) {
+		if (StdDraw.mouseX() > screenWidth - buttonWidth && StdDraw.mouseX() < screenWidth
+				&& StdDraw.mouseY() < screenHeight - (2 * buttonHeight)
+				&& StdDraw.mouseY() > screenHeight - (3 * buttonHeight)) {
 			stepButton();
 		}
 
 		// Checks clear button
-		if (StdDraw.mouseX() > screenWidth && StdDraw.mouseX() < screenWidth + buttonWidth
-				&& StdDraw.mouseY() < screenWidth - (3 * buttonHeight)
-				&& StdDraw.mouseY() > screenWidth - (4 * buttonHeight)) {
+		if (StdDraw.mouseX() > screenWidth - buttonWidth && StdDraw.mouseY() < screenHeight - (3 * buttonHeight)
+				&& StdDraw.mouseY() > 0) {
 			clearButton();
 		}
 	}
