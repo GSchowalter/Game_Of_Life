@@ -6,13 +6,13 @@
  */
 public class GameOfLife {
 
-	public static final int DRAW_DELAY = 1000;
+	public static final int DRAW_DELAY = 2;
 
-	public static int screenHeight = 400;
+	public static int screenHeight = 800;
 	public static int buttonWidth = screenHeight / 4;
 	public static int screenWidth = screenHeight + buttonWidth;
 	public static int buttonHeight = screenHeight / 5;
-	public static int length = 100;
+	public static int length = 50;
 	public static double colonyWidth = (double) (screenHeight) / length;
 	public static boolean ENABLED = false;
 	public static Colony[][] board;
@@ -27,25 +27,24 @@ public class GameOfLife {
 		setBoard(false);
 
 		while (true) {
-			while (ENABLED) {
+			if (ENABLED) {
 				if (timeCount == DRAW_DELAY) {
-					show();
 					update(board);
 					timeCount = 1;
 				}
 				eventHandler();
 				timeCount++;
 			}
-
-			while (!ENABLED) {
+            else 
+            {
 				if (timeCount == DRAW_DELAY)
 				{
-				show();
 				timeCount = 1;
 				}
 				eventHandler();
 				timeCount++;
 			}
+            show();
 		}
 	}
 
